@@ -1,0 +1,13 @@
+<ng-container *ngFor="let restaurant of restaurants">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{restaurant.name}}</h5>
+            <p class="card-text">
+                {{restaurant.address}}
+            </p>
+            <ngb-rating [readonly]="true" [rate]="restaurant.rating"></ngb-rating>
+        </div>
+        <i class="fa fa-trash" (click)="deleteRestaurant(restaurant.id)"></i>
+        <i class="fa fa-edit" (click)="editRestaurant(restaurant)"></i>
+    </div>
+</ng-container>
