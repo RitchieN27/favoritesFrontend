@@ -1,10 +1,10 @@
 export class Restaurant {
 
     constructor(
-        private id:number = 0,
+        private id: number = 0,
         private name: string = '',
         private address: string = '',
-        private rating: number = 0){}
+        private rating: number = 0) {}
 
     public get getId(): number {
         return this.id;

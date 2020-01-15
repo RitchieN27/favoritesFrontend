@@ -8,10 +8,9 @@ import { RestaurantService } from '../services/restaurant.service';
   styleUrls: ['./restaurant-form.component.scss']
 })
 export class RestaurantFormComponent implements OnInit {
-  
   @Input() restaurant: Restaurant;
 
-  constructor(private restaurantService : RestaurantService) { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     if (this.restaurant == null) {
@@ -19,8 +18,9 @@ export class RestaurantFormComponent implements OnInit {
     }
   }
 
-  saveForm() : void {
+  saveForm(): void {
     this.restaurantService.saveRestaurant(this.restaurant).subscribe();
   }
+
 
 }

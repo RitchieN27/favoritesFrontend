@@ -20,25 +20,26 @@ export class RestaurantService {
     .pipe(
         map((restaurants: any[]) => {
         return restaurants.map(restaurant => {
-          return new Restaurant(restaurant.id , restaurant.name, restaurant.address, restaurant.rating);
+          return new Restaurant(restaurant.id, restaurant.name, restaurant.address, restaurant.rating);
         });
       })
     );
   }
 
-  saveRestaurant(restaurant: Restaurant) : Observable<any> {
-    return this.http.put(this.API_URL + 'createRestaurant' , restaurant);
+  saveRestaurant(restaurant: Restaurant): Observable<any> {
+    return this.http.put(this.API_URL + 'createRestaurant', restaurant);
   }
 
-  getRestaurant(id : number) : Observable<Restaurant> {
-    return this.http.get(this.API_URL + "getResturant" + "/" + id.toString())
-    .pipe(map((restaurant : any) => {
-      return new Restaurant(restaurant.id , restaurant.name, restaurant.address, restaurant.rating);
+  getRestaurant(id: number): Observable<Restaurant> {
+    return this.http.get(this.API_URL + 'getResturant' + '/' + id.toString())
+    .pipe(
+      map((restaurant: any) => {
+        return new Restaurant(restaurant.id, restaurant.name, restaurant.address, restaurant.rating);
     }));
   }
 
-  deleteRestaurant(restaurantId : number) : Observable<any> {
-    return this.http.delete(this.API_URL + "deleteRestaurant" + "/" + restaurantId.toString());
+  deleteRestaurant(restaurantId: number): Observable<any> {
+    return this.http.delete(this.API_URL + 'deleteRestaurant' + '/' + restaurantId.toString());
   }
 
 }
