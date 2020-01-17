@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Restaurant } from '../model/restaurant';
 import { RestaurantService } from '../services/restaurant.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-form',
@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class RestaurantFormComponent implements OnInit {
   private restaurant: Restaurant;
 
-  constructor(private restaurantService: RestaurantService,  private router: Router) {}
+  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute , private router: Router) {}
 
-  /*ngOnInit() {
+  ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
       if (id != null) {
@@ -22,12 +22,6 @@ export class RestaurantFormComponent implements OnInit {
         this.restaurant = new Restaurant();
       }
     });
-  }*/
-
-  ngOnInit() {
-    if (this.restaurant == null) {
-      this.restaurant = new Restaurant();
-    }
   }
 
   saveForm(): void {

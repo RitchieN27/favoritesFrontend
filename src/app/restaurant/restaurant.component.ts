@@ -26,7 +26,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   editRestaurant(restaurant: Restaurant) {
-    this.router.navigate(['/restaurant', {id : restaurant.getId}]);
+    this.router.navigate(['/restaurant', restaurant.getId]);
   }
 
 }
