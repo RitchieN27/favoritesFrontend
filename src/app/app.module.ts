@@ -10,8 +10,12 @@ import { RestaurantFormComponent } from './restaurant-form/restaurant-form.compo
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent,  pathMatch: 'full' },
+  { path: 'restaurants', component: RestaurantComponent },
+  { path: 'restaurant', component: RestaurantFormComponent,  pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -19,7 +23,8 @@ export const routes: Routes = [
     AppComponent,
     RestaurantComponent,
     MenuComponent,
-    RestaurantFormComponent
+    RestaurantFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
