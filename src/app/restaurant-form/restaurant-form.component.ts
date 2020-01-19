@@ -14,14 +14,7 @@ export class RestaurantFormComponent implements OnInit {
   constructor(private restaurantService: RestaurantService, private route: ActivatedRoute , private router: Router) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      if (id != null) {
-        this.restaurantService.getRestaurant(id).subscribe(restaurant => this.restaurant = restaurant);
-      } else {
-        this.restaurant = new Restaurant();
-      }
-    });
+    this.restaurant = new Restaurant();
   }
 
   saveForm(): void {

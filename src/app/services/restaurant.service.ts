@@ -26,8 +26,8 @@ export class RestaurantService {
     );
   }
 
-  getRestaurant(id: number): Observable<Restaurant> {
-    return this.http.get(API_URL + 'getRestaurant' + '/' + id.toString())
+  getRestaurant(restaurantId: string): Observable<Restaurant> {
+    return this.http.get(API_URL + 'getRestaurant' + '/' + restaurantId)
     .pipe(
       map((restaurant: any) => {
         return new Restaurant(restaurant.id, restaurant.name, restaurant.address, restaurant.rating);
@@ -39,7 +39,11 @@ export class RestaurantService {
   }
 
   deleteRestaurant(restaurantId: number): Observable<any> {
-    return this.http.delete(API_URL + 'deleteRestaurant' + '/' + restaurantId.toString());
+    return this.http.delete(API_URL + 'deleteRestaurant' + '/' + restaurantId);
+  }
+
+  updateRestaurant(restaurant: Restaurant) : Observable<any> {
+    return this.http.post(API_URL + "updateRestaurant" , restaurant);
   }
 
 }

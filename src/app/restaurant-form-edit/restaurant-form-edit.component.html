@@ -1,0 +1,17 @@
+<form (submit)="editRestaurant(restaurant)" *ngIf="restaurant">
+
+    <div class="form-group">
+        <label class="control-label" for="name">Name</label>
+        <input name="name" type="text" [(ngModel)]="restaurant.name" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="address">Address</label>
+        <input name="address" type="text" [(ngModel)]="restaurant.address" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="rating">Rating</label>
+        <ngb-rating name="rating" [(ngModel)]="restaurant.rating" required></ngb-rating>
+    </div> 
+    
+    <button type="submit" class="btn btn-primary pull-right">Update Restaurant</button>
+</form>
