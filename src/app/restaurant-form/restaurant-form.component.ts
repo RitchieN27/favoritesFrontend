@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RestaurantFormComponent implements OnInit {
   private restaurantForm: FormGroup;
 
+  private submitted: boolean;
+
   constructor(
     private restaurantService: RestaurantService,
     private route: ActivatedRoute,
@@ -24,10 +26,14 @@ export class RestaurantFormComponent implements OnInit {
       address: ['', Validators.required],
       rating: ['', Validators.required]
     });
+    this.submitted = false;
   }
 
-  saveForm(): void {
-    if (this.restaurantForm.valid) {
+  submitForm(): void {
+    this.submitted = true;
+    if (this.f.name.invalid || this.f.address.invalid) {
+      return;
+    } else {
       const restaurant: Restaurant = new Restaurant(0,
         this.restaurantForm.value.name,
         this.restaurantForm.value.address,
@@ -35,11 +41,16 @@ export class RestaurantFormComponent implements OnInit {
       this.restaurantService.saveRestaurant(restaurant).subscribe(res => {
         this.router.navigate(['/restaurants']);
       });
-      }
     }
+  }
 
   get f() {
     return this.restaurantForm.controls;
+  }
+
+  resetForm(): void {
+    this.restaurantForm.reset();
+    this.submitted = false;
   }
 
 }

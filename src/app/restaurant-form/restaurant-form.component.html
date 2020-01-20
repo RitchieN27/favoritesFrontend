@@ -1,17 +1,29 @@
-<form [formGroup]="restaurantForm" (submit)="saveForm()">
+<form [formGroup]="restaurantForm" (ngSubmit)="submitForm()">
 
     <div class="form-group">
-        <label class="control-label" for="name">Name</label>
-        <input name="name" type="text" formControlName="name">
+        <label class="control-label">Name</label>
+        <input class="form-control" name="name" type="text" formControlName="name"/>
+        <div *ngIf="f.name.errors && submitted" class="invalid-feedback d-block">
+            <div *ngIf="f.name.errors.required">
+                Name is required
+            </div>
+        </div>
     </div>
     <div class="form-group">
-        <label class="control-label" for="address">Address</label>
-        <input name="address" type="text" [(ngModel)]="restaurant.address" required>
+        <label class="control-label">Address</label>
+        <input class="form-control" name="address" type="text" formControlName="address"/>
+        <div *ngIf="f.address.errors && submitted" class="invalid-feedback d-block">
+            <div *ngIf="f.address.errors.required">
+                Address is required
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label class="control-label" for="rating">Rating</label>
-        <ngb-rating name="rating" [(ngModel)]="restaurant.rating" required></ngb-rating>
+        <ngb-rating [ngClass]="form-control" name="rating" formControlName="rating"></ngb-rating>
     </div> 
     
     <button type="submit" class="btn btn-primary pull-right">Save Restaurant</button>
+    <button type="reset" class="btn btn-secondary pull-left" (click)="resetForm()">Reset All Fields</button>
+
 </form>
