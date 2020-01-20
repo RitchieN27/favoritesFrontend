@@ -42,8 +42,8 @@ export class RestaurantService {
     return this.http.delete(API_URL + 'deleteRestaurant' + '/' + restaurantId);
   }
 
-  updateRestaurant(restaurant: Restaurant) : Observable<any> {
-    return this.http.post(API_URL + "updateRestaurant" , restaurant);
+  updateRestaurant(restaurant: Restaurant): Observable<any> {
+    return this.http.post(API_URL + 'updateRestaurant' , restaurant);
   }
 
 }

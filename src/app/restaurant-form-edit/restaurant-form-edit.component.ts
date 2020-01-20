@@ -13,10 +13,11 @@ export class RestaurantFormEditComponent implements OnInit {
 
   restaurant: Restaurant;
 
-  constructor(private restaurantservice : RestaurantService, private route : ActivatedRoute, private router : Router) { }
+  constructor(private restaurantservice: RestaurantService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const id : any= this.getProduct(this.route.snapshot.params['id']);
+    const key = 'id';
+    const id: any = this.getProduct(this.route.snapshot.params[key]);
     if (id != null) {
       this.getProduct(id);
     }
@@ -25,10 +26,10 @@ export class RestaurantFormEditComponent implements OnInit {
   editRestaurant() {
     this.restaurantservice.updateRestaurant(this.restaurant).subscribe(restaurant => {
       this.router.navigate(['/restaurants']);
-    })
+    });
   }
 
-  getProduct(id : string) {
+  getProduct(id: string) {
     this.restaurantservice.getRestaurant(id).subscribe(restaurant => {
       this.restaurant = restaurant;
     });
