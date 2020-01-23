@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RestaurantFormEditComponent } from './restaurant-form-edit/restaurant-form-edit.component';
+import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent,  pathMatch: 'full' },
@@ -27,7 +28,8 @@ export const routes: Routes = [
     MenuComponent,
     RestaurantFormComponent,
     HomeComponent,
-    RestaurantFormEditComponent
+    RestaurantFormEditComponent,
+    RestaurantDetailsComponent
   ],
   imports: [
     BrowserModule,
