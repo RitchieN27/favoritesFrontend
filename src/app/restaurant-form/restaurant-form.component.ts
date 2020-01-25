@@ -48,9 +48,17 @@ export class RestaurantFormComponent implements OnInit {
     return this.restaurantForm.controls;
   }
 
+  get FormDirtyState(): boolean {
+    return this.restaurantForm.dirty;
+  }
+
   resetForm(): void {
     this.restaurantForm.reset();
     this.submitted = false;
+  }
+
+  cancel(): void { 
+    this.router.navigate(['restaurants']);
   }
 
 }

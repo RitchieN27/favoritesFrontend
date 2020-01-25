@@ -10,7 +10,7 @@ import { RestaurantService } from '../services/restaurant.service';
 })
 export class RestaurantDetailsComponent implements OnInit {
 
-  @Input() restaurant;
+  @Input() restaurant: Restaurant;
 
   @Output() restaurantModify: EventEmitter<Restaurant> = new EventEmitter<Restaurant>();
 
@@ -26,11 +26,11 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   deleteRestaurant(id: number) {
-    this.restaurantDelete.emit(this.restaurant.id);
+    this.restaurantDelete.emit(this.restaurant.getId);
   }
 
   getAddressClass() {
-    if (this.restaurant.address === '75013') {
+    if (this.restaurant.getAddress === '75013') {
       return 'green';
     }
     return '';
