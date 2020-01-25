@@ -15,9 +15,10 @@ export class RestaurantRouteActivatorService implements CanActivate {
   boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
     const restaurantId = route.params['id'];
-    let restaurantExist: boolean;
-      //return this.restaurantService.getRestaurant(restaurantId).pipe(map(restaurant => { return true; } , err => { this.router.navigate([404]) ; return false}
-    //))
+    const restaurantExist = false;
+      // return this.restaurantService.getRestaurant(restaurantId).pipe(map(restaurant => { return true; } ,
+      // err => { this.router.navigate([404]) ; return false}
+    // ))
     return true;
 
  }

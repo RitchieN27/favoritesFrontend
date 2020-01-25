@@ -57,7 +57,7 @@ export class RestaurantFormComponent implements OnInit {
     this.submitted = false;
   }
 
-  cancel(): void { 
+  cancel(): void {
     this.router.navigate(['restaurants']);
   }
 
