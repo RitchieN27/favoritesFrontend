@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
 import { Restaurant } from '../model/restaurant';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-restaurant',
@@ -12,11 +13,13 @@ export class RestaurantComponent implements OnInit {
 
   private restaurants: Restaurant[];
 
-  constructor(private restaurantService: RestaurantService, private router: Router) {
-   }
+  constructor(private restaurantService: RestaurantService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.restaurantService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
+    this.route.data.subscribe(restaurants => {
+      // pourquoi deux call ?
+      this.restaurants = restaurants.restaurants;
+    });
   }
 
   deleteRestaurant(id: number) {
