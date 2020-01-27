@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { RestaurantService } from './restaurant.service';
 import { Restaurant } from '../model/restaurant';
@@ -13,5 +13,4 @@ export class RestaurantResolver implements Resolve<Restaurant[]> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.restaurantService.getRestaurants();
     }
-    
 }
