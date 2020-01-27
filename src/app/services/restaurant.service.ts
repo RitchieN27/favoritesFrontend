@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Restaurant } from '../model/restaurant';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 const API_URL = 'http://localhost:8080/favoritesBackend/rest/restaurant/';
 
@@ -31,7 +31,7 @@ export class RestaurantService {
     .pipe(
       map((restaurant: any) => {
         return new Restaurant(restaurant.id, restaurant.name, restaurant.address, restaurant.rating);
-    }));
+    }), catchError(this.errorHandler));
   }
 
   saveRestaurant(restaurant: Restaurant): Observable<any> {
@@ -45,5 +45,20 @@ export class RestaurantService {
   updateRestaurant(restaurant: Restaurant): Observable<any> {
     return this.http.post(API_URL + 'updateRestaurant' , restaurant);
   }
+
+  // Error handling
+  errorHandler(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log('we custom catch the error');
+    console.log(errorMessage);
+    return throwError(errorMessage);
+ }
 
 }
