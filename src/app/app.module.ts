@@ -40,7 +40,7 @@ export class AppModule { }
 
 // Test for a deactivation
 export function checkDirtyState(restaurantFormComponent: RestaurantFormComponent) {
-  if (restaurantFormComponent.FormDirtyState) {
+  if (restaurantFormComponent.restaurantForm.dirty && restaurantFormComponent.restaurantForm.invalid) {
     return window.confirm('You have not saved this restaurant, are you sure you want to cancel ?');
   }
   return true;

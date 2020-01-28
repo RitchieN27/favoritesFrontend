@@ -10,9 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./restaurant-form.component.scss']
 })
 export class RestaurantFormComponent implements OnInit {
-  private restaurantForm: FormGroup;
+  public restaurantForm: FormGroup;
 
   private submitted: boolean;
+  public showErrorMouseOver:boolean;
 
   constructor(
     private restaurantService: RestaurantService,
@@ -22,7 +23,7 @@ export class RestaurantFormComponent implements OnInit {
 
   ngOnInit() {
     this.restaurantForm = this.formbuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required , Validators.pattern('a-zA-Z.*')]],
       address: ['', Validators.required],
       rating: ['', Validators.required]
     });
@@ -48,10 +49,6 @@ export class RestaurantFormComponent implements OnInit {
     return this.restaurantForm.controls;
   }
 
-  get FormDirtyState(): boolean {
-    return this.restaurantForm.dirty;
-  }
-
   resetForm(): void {
     this.restaurantForm.reset();
     this.submitted = false;
@@ -59,6 +56,14 @@ export class RestaurantFormComponent implements OnInit {
 
   cancel(): void {
     this.router.navigate(['restaurants']);
+  }
+
+  mouseEnter(): void {
+    this.showErrorMouseOver = true;
+  }
+  
+  mouseLeave(): void {
+    this.showErrorMouseOver = false;
   }
 
 }
