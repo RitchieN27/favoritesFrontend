@@ -3,18 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RestaurantComponent } from './restaurant/restaurant.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MenuComponent } from './menu/menu.component';
-import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './home/home.component';
-import { RestaurantFormEditComponent } from './restaurant-form-edit/restaurant-form-edit.component';
-import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
-import { Error404Component } from './error404/error404.component';
-import { RestaurantRouteActivatorService } from './services/restaurant-route-activator.service';
 
+
+import { RestaurantComponent, MenuComponent, RestaurantFormComponent, HomeComponent, RestaurantFormEditComponent,
+  RestaurantDetailsComponent, Error404Component, RestaurantRouteActivatorService } from './index';
 
 @NgModule({
   declarations: [

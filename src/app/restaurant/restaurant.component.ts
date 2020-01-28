@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
 import { Restaurant } from '../model/restaurant';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-restaurant',
