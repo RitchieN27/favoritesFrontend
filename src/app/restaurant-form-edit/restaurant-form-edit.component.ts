@@ -16,11 +16,9 @@ export class RestaurantFormEditComponent implements OnInit {
   constructor(private restaurantservice: RestaurantService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const key = 'id';
-    const id: any = this.getProduct(this.route.snapshot.params[key]);
-    if (id != null) {
-      this.getProduct(id);
-    }
+    this.route.data.subscribe(restaurant => {
+      this.restaurant = restaurant.restaurant;
+    });
   }
 
   editRestaurant() {
@@ -29,10 +27,8 @@ export class RestaurantFormEditComponent implements OnInit {
     });
   }
 
-  getProduct(id: string) {
-    this.restaurantservice.getRestaurant(id).subscribe(restaurant => {
-      this.restaurant = restaurant;
-    });
+  cancel(): void {
+    this.router.navigate(['restaurants']);
   }
 
 }

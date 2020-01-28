@@ -14,3 +14,4 @@ export * from './model/restaurant';
 export * from './services/restaurant-resolver';
 export * from './services/restaurant-route-activator.service';
 export * from './services/restaurant.service';
+export * from './services/restaurant-edit-resolver';

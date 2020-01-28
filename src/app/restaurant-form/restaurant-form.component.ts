@@ -13,7 +13,7 @@ export class RestaurantFormComponent implements OnInit {
   public restaurantForm: FormGroup;
 
   private submitted: boolean;
-  public showErrorMouseOver:boolean;
+  public showErrorMouseOver: boolean;
 
   constructor(
     private restaurantService: RestaurantService,
@@ -61,7 +61,7 @@ export class RestaurantFormComponent implements OnInit {
   mouseEnter(): void {
     this.showErrorMouseOver = true;
   }
-  
+
   mouseLeave(): void {
     this.showErrorMouseOver = false;
   }
